@@ -1,0 +1,4 @@
+# Picom 13 or newer for XFCE/X11 workspace transitions.
+picom
+# Combine pinned launchers and running windows in the bottom panel.
+xfce4-docklike-plugin

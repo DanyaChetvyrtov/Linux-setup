@@ -1,0 +1,166 @@
+/* Panel-only overrides for the existing Kali green theme.
+ * The apply script substitutes the panel IDs before loading this stylesheet.
+ */
+.xfce4-panel {
+  color: #e7edf5;
+  text-shadow: none;
+  -gtk-icon-shadow: none;
+}
+
+/* External plugins have separate windows without the panel-ID classes.
+ * Clear their theme backgrounds so they do not cover the translucent panel.
+ */
+.xfce4-panel.background,
+.xfce4-panel#XfcePanelWindowWrapper {
+  background-color: transparent;
+  background-image: none;
+}
+
+/* A translucent menu bar; a single background keeps the wallpaper visible. */
+.xfce4-panel.background.panel-@TOP_PANEL@ {
+  background-color: rgba(34, 35, 39, 0.10);
+  background-image: none;
+  color: #f5f5f7;
+  font-family: Cantarell, sans-serif;
+  font-size: 13px;
+  border: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+  border-radius: 0;
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.04);
+}
+
+/* Rounded dock, with an inner highlight that survives edge clipping. */
+.xfce4-panel.background.panel-@BOTTOM_PANEL@ {
+  background-color: rgba(17, 23, 31, 0.16);
+  background-image: none;
+  border: 1px solid rgba(182, 211, 222, 0.20);
+  border-radius: 18px;
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.07);
+}
+
+.xfce4-panel button {
+  background-image: none;
+  background-color: transparent;
+  border: 1px solid transparent;
+  border-radius: 7px;
+  box-shadow: none;
+  text-shadow: none;
+  color: #e7edf5;
+  margin: 3px 2px;
+  padding: 0 4px;
+  min-height: 0;
+  transition: background-color 120ms ease, border-color 120ms ease;
+}
+
+.xfce4-panel button:hover {
+  background-color: rgba(190, 216, 230, 0.10);
+  border-color: rgba(190, 216, 230, 0.10);
+  box-shadow: none;
+}
+
+.xfce4-panel button:checked,
+.xfce4-panel button:active {
+  color: #a2f1ce;
+  background-color: rgba(73, 211, 164, 0.13);
+  border-color: rgba(73, 211, 164, 0.23);
+  box-shadow: none;
+}
+
+/* Room around the dock icons; no icon/font downloads needed. */
+.xfce4-panel.panel-@BOTTOM_PANEL@ button {
+  border-radius: 12px;
+  margin: 4px 3px;
+  padding: 0 4px;
+  min-width: 38px;
+}
+
+.xfce4-panel.panel-@BOTTOM_PANEL@ #launcher-arrow {
+  min-width: 0;
+  padding: 0;
+  margin: 4px 0;
+  border-width: 0;
+}
+
+.xfce4-panel.panel-@BOTTOM_PANEL@ .tasklist button:checked,
+.xfce4-panel.panel-@BOTTOM_PANEL@ .tasklist button:active {
+  background-color: rgba(73, 211, 164, 0.15);
+  border-color: rgba(73, 211, 164, 0.30);
+  box-shadow: inset 0 -2px #49d3a4;
+}
+
+/* Menu controls and workspace buttons use a neutral highlight. */
+.xfce4-panel.panel-@TOP_PANEL@ button {
+  color: #f5f5f7;
+  border: 0;
+  border-radius: 5px;
+  margin: 2px 1px;
+  padding: 0 5px;
+  min-width: 0;
+  min-height: 0;
+  box-shadow: none;
+}
+
+.xfce4-panel.panel-@TOP_PANEL@ button:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+  border-color: transparent;
+}
+
+.xfce4-panel.panel-@TOP_PANEL@ button:checked,
+.xfce4-panel.panel-@TOP_PANEL@ button:active {
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.18);
+  border-color: transparent;
+  box-shadow: none;
+}
+
+.xfce4-panel.panel-@TOP_PANEL@ #actions-button {
+  font-weight: bold;
+  padding: 0 10px;
+}
+
+.xfce4-panel.panel-@TOP_PANEL@ .genmon_valuebutton {
+  padding: 0 8px;
+}
+
+.xfce4-panel.panel-@TOP_PANEL@ widget grid button.flat.toggle {
+  font-size: 11px;
+  padding: 0 5px;
+  margin: 3px 1px;
+}
+
+.xfce4-panel.panel-@TOP_PANEL@ widget grid button.flat.toggle:checked {
+  font-weight: 600;
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.16);
+  border-color: transparent;
+}
+
+.xfce4-panel.panel-@TOP_PANEL@ #clock-button {
+  color: #f5f5f7;
+  background-color: transparent;
+  border: 0;
+  border-radius: 5px;
+  margin: 2px 8px 2px 2px;
+  padding: 0 8px;
+}
+
+.xfce4-panel.panel-@TOP_PANEL@ #clock-button:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+}
+
+.xfce4-panel #whiskermenu-button image {
+  -gtk-icon-shadow: none;
+}
+
+.xfce4-panel separator {
+  color: rgba(182, 211, 222, 0.18);
+  background-color: rgba(182, 211, 222, 0.12);
+}
+
+/* Invisible edge sensor while the dock is hidden. */
+.xfce4-panel#XfcePanelWindowHidden {
+  background-color: transparent;
+  background-image: none;
+  border-color: transparent;
+  box-shadow: none;
+}

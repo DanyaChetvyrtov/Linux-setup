@@ -1,0 +1,6 @@
+ripgrep
+fd-find
+fzf
+direnv
+shellcheck
+neovim

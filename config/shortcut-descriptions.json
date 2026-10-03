@@ -1,0 +1,6 @@
+{
+  "commands": {
+    "/usr/bin/xfdesktop --next": "Change to the next wallpaper"
+  },
+  "xfwm4": {}
+}

@@ -1,0 +1,8 @@
+{
+  "device": "ELAN1200:00 04F3:309F Touchpad",
+  "natural_scrolling": true,
+  "fingers": 4,
+  "threshold": 60,
+  "wrap": false,
+  "swipe_left": "next"
+}

@@ -1,0 +1,8 @@
+.aws/
+.codex/
+.agents/
+state/
+.env
+*.local
+__pycache__/
+*.pyc

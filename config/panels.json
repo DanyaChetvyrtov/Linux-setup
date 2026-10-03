@@ -1,0 +1,37 @@
+{
+  "top": {
+    "size": 28,
+    "icon-size": 16,
+    "length": 100,
+    "length-adjust": false,
+    "autohide-behavior": 0,
+    "position": "p=6;x=0;y=0",
+    "position-locked": true,
+    "mode": 0,
+    "nrows": 1,
+    "background-style": 0,
+    "enter-opacity": 100,
+    "leave-opacity": 100
+  },
+  "bottom": {
+    "size": 54,
+    "icon-size": 40,
+    "length": 1,
+    "length-adjust": true,
+    "autohide-behavior": 1,
+    "position-locked": true,
+    "mode": 0,
+    "nrows": 1,
+    "background-style": 0,
+    "enter-opacity": 100,
+    "leave-opacity": 100
+  },
+  "bottom-plugins": ["whiskermenu", "showdesktop", "directorymenu", "docklike"],
+  "pinned-apps": ["org.xfce.mousepad", "firefox-esr", "qterminal"],
+  "top-menu-bar": {
+    "system-title": "Kali",
+    "clock-format": "%a %-d %b  %H:%M",
+    "clock-font": "Cantarell 10"
+  },
+  "cpu-graph-width": 40
+}
