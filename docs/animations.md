@@ -1,6 +1,6 @@
 # Animated workspace gestures on XFCE
 
-Picom 13 replaces XFWM's compositing while XFWM continues to manage windows. Four-finger swipes retain the current direction and filtering. After release, windows on the outgoing and incoming workspaces slide together over one monitor width with a 180 ms ease-out curve. Panels and sticky windows stay in place. Ordinary window actions outside the transition are not animated.
+Picom 13 replaces XFWM's compositing while XFWM continues to manage windows. Four-finger swipes retain the current direction and filtering. After release, windows on the outgoing and incoming workspaces slide together over one monitor width with a 180 ms ease-out curve. Panels and sticky windows stay in place. Ordinary application-window actions outside the transition are not animated. The bottom panel has separate [hover and hide/show animations](desktop.md#dock-magnification-and-motion).
 
 This is a short transition after a gesture, rather than Hyprland's interactive workspace movement that follows the fingers. Clicking the XFCE workspace pager still uses the normal immediate switch.
 

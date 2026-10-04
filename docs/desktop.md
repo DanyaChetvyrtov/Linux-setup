@@ -1,6 +1,6 @@
 # Split desktop panels
 
-The layout keeps the existing green GTK/icon/window theme and top-panel widgets. A 28px menu bar places the Kali system menu and active application's name on the left, with workspaces, CPU/VPN indicators, network/Bluetooth tray, audio, notifications, battery and the date/time on the right. A centered 54px bottom panel contains the applications menu, existing desktop/file controls and Docklike Taskbar. The applications menu opens above the bottom panel, including when invoked with Super through the existing keyboard shortcut.
+The layout keeps the existing green GTK/icon/window theme and top-panel widgets. A 28px menu bar places the Kali system menu and active application's name on the left, with workspaces, CPU/VPN indicators, network/Bluetooth tray, audio, notifications, battery and the date/time on the right. A centered 64px bottom panel contains the applications menu, existing desktop/file controls and Docklike Taskbar. The applications menu opens above the bottom panel, including when invoked with Super through the existing keyboard shortcut.
 
 Click Kali for session and power controls. Click the active application's name for the open-window list. The label updates once per second and shows Desktop when no application is active. It uses the installed Generic Monitor plugin and `scripts/panel-active-app.py`; no additional menu-bar package is needed. The clock includes the weekday and date and opens a calendar when clicked. `top-menu-bar` in `config/panels.json` sets the system-menu title and clock format.
 
@@ -23,6 +23,22 @@ Every apply exports the live configuration with XFCE Panel Profiles before chang
 Edit `config/panels.json` to reproduce different heights, hiding behavior, plugin placement or initial pins. The script adapts to the current desktop dimensions, preserves existing plugin settings, and refuses unfamiliar multi-panel layouts. Run without sudo: desktop configuration belongs to your user session. Applying briefly restarts the panels.
 
 Right-click an empty panel area and choose Panel → Panel Preferences to adjust it interactively. Official documentation: [Panel Preferences](https://docs.xfce.org/xfce/xfce4-panel/preferences), [Panel Profiles](https://docs.xfce.org/apps/xfce4-panel-profiles/start).
+
+## Dock magnification and motion
+
+Hovering an icon enlarges it from 40px to 52px and lifts it slightly, with 180 ms easing in both directions. Button positions and click areas stay fixed. The panel reserves enough height and spacing for the enlarged icons. GTK's [animated icon transforms](https://docs.gtk.org/gtk3/css-properties.html) apply to Docklike app icons and the existing dock controls, including the applications menu.
+
+The dock retains intelligent hiding when a window overlaps it. Moving to the bottom edge reveals it after a short delay; moving away allows 450 ms before hiding. Picom eases position changes over 220 ms, including the reveal that XFCE normally performs immediately. The rule matches the main panel window taller than 40px, excluding the top bar and the small edge sensor. It uses Picom 13's [position animation trigger](https://github.com/yshui/picom/blob/v13/man/picom.1.adoc); this trigger is experimental, and its rendered hide/show positions were verified on this workstation. No blur or additional background process is required. Maximized windows allow edge reveal; true fullscreen windows still cover the panel.
+
+```sh
+python3 scripts/configure-dock.py          # Preview
+python3 scripts/configure-dock.py --apply  # Apply size, styling, and compositor motion
+python3 scripts/configure-dock.py --restore
+```
+
+The supervised Picom compositor must already be running. Apply saves existing GTK styles, the changed bottom-panel properties, and a compositor rollback file under ignored `state/dock/backups/`. Restore puts back those styles and properties and reloads the saved compositor configuration; it preserves app pins and unrelated panel properties. On the initial apply, the compositor rollback removes only the new dock-motion block. Subsequent applies back up the current compositor file. Restoration leaves the repository's panel CSS and JSON defaults available for reapplying the upgrade.
+
+Hover timing and magnification live in `config/panels.css`; motion timing lives in `config/dock-motion.conf`. Applying regenerates the marked dock block in `config/picom.conf`, so the upgrade can be reapplied after restoring. Existing Docklike pins, wallpaper cycling, and hotkeys are retained. Local rendered-frame measurements are saved in `state/dock/verification.json`.
 
 ## Panel appearance
 

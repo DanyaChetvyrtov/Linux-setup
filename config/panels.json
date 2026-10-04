@@ -14,11 +14,12 @@
     "leave-opacity": 100
   },
   "bottom": {
-    "size": 54,
+    "size": 64,
     "icon-size": 40,
     "length": 1,
     "length-adjust": true,
     "autohide-behavior": 1,
+    "popdown-speed": 25,
     "position-locked": true,
     "mode": 0,
     "nrows": 1,

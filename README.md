@@ -2,7 +2,7 @@
 
 Reproducible, modular configuration for this workstation. Keep this checkout at its current path: user configuration sources its files directly.
 
-Desktop layout: see [split panel setup and rollback](docs/desktop.md). The bottom application panel uses Docklike Taskbar to combine pinned apps and running windows; settings live in `config/panels.json`.
+Desktop layout: see [split panel setup and rollback](docs/desktop.md). The bottom application panel uses Docklike Taskbar with animated hover magnification and smooth hide/show motion; settings live in `config/panels.json`.
 
 Touchpad behavior: see [scroll direction and four-finger workspace gestures](docs/input.md). Configuration lives in `config/input.json` and runs in the user XFCE/X11 session.
 
