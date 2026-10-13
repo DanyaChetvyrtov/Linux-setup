@@ -18,7 +18,7 @@
     "icon-size": 40,
     "length": 1,
     "length-adjust": true,
-    "autohide-behavior": 1,
+    "autohide-behavior": 2,
     "popdown-speed": 25,
     "position-locked": true,
     "mode": 0,

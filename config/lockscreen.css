@@ -1,0 +1,187 @@
+/* XFCE Screensaver's native password panel. The keycap class scopes this
+ * appearance to the session lock screen.
+ */
+#login_window.keycap {
+  background-color: #171c24;
+  background-image: none;
+  color: #e9eef5;
+  border: 1px solid rgba(211, 229, 239, 0.18);
+  border-radius: 18px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.28);
+  font-family: Cantarell, sans-serif;
+  font-size: 14px;
+  text-shadow: none;
+  -gtk-icon-shadow: none;
+}
+
+#login_window.keycap #content_frame {
+  background-color: transparent;
+  background-image: none;
+  border: 0;
+  box-shadow: none;
+  padding: 8px 8px 22px;
+}
+
+#login_window.keycap frame > border {
+  border: 0;
+  box-shadow: none;
+}
+
+#login_window.keycap #content_frame label {
+  color: #f4f7fa;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+#login_window.keycap #user_image_border {
+  background-color: #222b34;
+  background-image: none;
+  border: 1px solid rgba(211, 229, 239, 0.12);
+  border-radius: 16px;
+  padding: 8px;
+  box-shadow: none;
+}
+
+#login_window.keycap entry {
+  min-width: 250px;
+  min-height: 30px;
+  padding: 8px 14px;
+  background-color: #222b34;
+  background-image: none;
+  color: #f4f7fa;
+  caret-color: #97e5c8;
+  border: 1px solid #37454b;
+  border-radius: 12px;
+  box-shadow: none;
+  font-size: 16px;
+  transition: border-color 140ms ease, background-color 140ms ease;
+}
+
+#login_window.keycap entry:focus {
+  background-color: #253039;
+  border-color: #5bac91;
+  box-shadow: inset 0 0 0 1px rgba(91, 172, 145, 0.12);
+}
+
+#login_window.keycap entry image {
+  color: #97e5c8;
+  -gtk-icon-shadow: none;
+}
+
+#login_window.keycap entry selection {
+  background-color: #5bac91;
+  color: #101d18;
+}
+
+#login_window.keycap #buttonbox_frame {
+  background-color: #1c232d;
+  background-image: none;
+  border: 0;
+  border-top: 1px solid rgba(211, 229, 239, 0.10);
+  border-radius: 0 0 18px 18px;
+  padding: 16px 8px 8px;
+  box-shadow: none;
+}
+
+#login_window.keycap button,
+#login_window.keycap #buttonbox_frame button {
+  min-width: 64px;
+  min-height: 24px;
+  padding: 10px 16px;
+  margin: 0 2px;
+  background-color: #27313e;
+  background-image: none;
+  color: #e9eef5;
+  border: 1px solid rgba(211, 229, 239, 0.12);
+  border-radius: 10px;
+  box-shadow: none;
+  font-weight: 500;
+  text-shadow: none;
+  -gtk-icon-shadow: none;
+  transition: background-color 140ms ease, border-color 140ms ease;
+}
+
+#login_window.keycap button:hover,
+#login_window.keycap #buttonbox_frame button:hover {
+  background-color: #323f4d;
+  background-image: none;
+  border-color: rgba(211, 229, 239, 0.20);
+  box-shadow: none;
+}
+
+#login_window.keycap button:focus {
+  outline: 2px solid rgba(151, 229, 200, 0.65);
+  outline-offset: 2px;
+}
+
+#login_window.keycap #content_frame button {
+  min-width: 20px;
+  min-height: 30px;
+  padding: 8px;
+  margin: 0 0 0 6px;
+  background-color: transparent;
+  border-color: transparent;
+}
+
+#login_window.keycap #content_frame button:hover {
+  background-color: #323f4d;
+}
+
+#login_window.keycap #content_frame button:checked {
+  background-color: rgba(94, 195, 156, 0.16);
+  color: #97e5c8;
+}
+
+#login_window.keycap #buttonbox_frame #login_button {
+  background-color: #69c9a6;
+  background-image: none;
+  color: #101d18;
+  border-color: #69c9a6;
+  box-shadow: none;
+  font-weight: 600;
+}
+
+#login_window.keycap #buttonbox_frame #login_button:hover {
+  background-color: #88dfbd;
+  border-color: #88dfbd;
+}
+
+#login_window.keycap #buttonbox_frame #login_button:active {
+  background-color: #54b892;
+  border-color: #54b892;
+}
+
+#login_window.keycap button:disabled,
+#login_window.keycap #buttonbox_frame button:disabled,
+#login_window.keycap #buttonbox_frame #login_button:disabled {
+  background-color: #252e37;
+  border-color: #37454b;
+  color: #8d9ba8;
+}
+
+/* Status, Caps Lock warnings and authentication errors stay visible. */
+#login_window.keycap #greeter_infobar {
+  background-color: #242c37;
+  background-image: none;
+  color: #e9eef5;
+  border: 0;
+  padding: 12px 24px;
+  box-shadow: none;
+}
+
+#login_window.keycap #greeter_infobar > revealer > box {
+  background-color: #242c37;
+  background-image: none;
+  color: #e9eef5;
+  border: 0;
+  box-shadow: none;
+}
+
+#login_window.keycap #greeter_infobar.warning,
+#login_window.keycap #greeter_infobar.error,
+#login_window.keycap #greeter_infobar.warning > revealer > box,
+#login_window.keycap #greeter_infobar.error > revealer > box {
+  background-color: #352b26;
+  color: #f0c9a1;
+}

@@ -118,7 +118,8 @@ def default_description(binding, catalog):
     if executable == "xfdesktop" and "--next" in args:
         return "Change to the next wallpaper"
     if executable == "xfce4-popup-whiskermenu":
-        return "Open the applications menu" + (" at the pointer" if "--pointer" in args else "")
+        position = " at the screen center" if "--center" in args else " at the pointer" if "--pointer" in args else ""
+        return "Open the applications menu" + position
     if executable == "xfce4-screenshooter":
         region = next((label for flag, label in [("--region", "a selected area"),
                       ("--window", "the active window"), ("--fullscreen", "the whole screen")]

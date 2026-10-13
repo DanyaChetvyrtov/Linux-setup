@@ -123,7 +123,7 @@ def main():
         apply()
     else:
         print("Preview: existing XFCE dock, 40px icons enlarging to 52px on hover.")
-        print("64px panel, short eased icon and hide/show transitions; intelligent hiding retained.")
+        print("64px panel, short eased icon and hide/show transitions; existing hiding behavior retained.")
         print("Apply: python3 scripts/configure-dock.py --apply")
 
 

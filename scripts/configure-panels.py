@@ -298,7 +298,10 @@ def main():
         apply(spec)
     else:
         print(f"Preview: full-width {spec['top']['size']}px menu bar; centered {spec['bottom']['size']}px bottom app panel.")
-        print("Docklike combines pinned apps and running windows; bottom intelligently hides.")
+        hiding = {0: "stays visible", 1: "hides when the focused window overlaps it",
+                  2: "hides until the bottom edge is hovered"}
+        print("Docklike combines pinned apps and running windows; bottom "
+              + hiding[spec["bottom"]["autohide-behavior"]] + ".")
         print("Install xfce4-docklike-plugin first. Existing Docklike pins are retained.")
         print("Applying panel settings needs no administrator privileges. Use --apply in your XFCE session.")
 

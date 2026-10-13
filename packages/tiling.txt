@@ -1,0 +1,3 @@
+# Automatic binary-tree tiling while retaining the XFCE desktop.
+bspwm
+sxhkd

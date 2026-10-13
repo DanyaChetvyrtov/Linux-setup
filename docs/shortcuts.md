@@ -2,11 +2,15 @@
 
 Open **Shortcuts** from the application menu. It combines the active application and window/workspace bindings from XFCE in a table with **Hotkey**, **Description**, and **Command** columns. Search any column or filter by category. **Super** means the Windows key.
 
+With [automatic tiling](tiling.md) enabled, window/workspace rows come from the active SXHKD configuration rather than the inactive XFWM settings. Application bindings continue to come from XFCE. Choose **Refresh shortcuts** after editing and reapplying the tiling configuration; **Edit hotkeys…** opens the current window-shortcut file.
+
 Double-click a row or select **Edit description…** to change its description. You can also edit the description directly in the table. Notes are saved automatically; **Reset to default** restores the supplied description. If a hotkey is reassigned to a different command, its old note is no longer shown.
 
 Use **Edit hotkeys…** to open XFCE's application or window shortcut settings. The viewer refreshes when those bindings change. It reads the bindings rather than maintaining a second copy.
 
 The wallpaper hotkey is **Super + Shift + W**, described as “Change to the next wallpaper.”
+
+**Super + Space** switches between English and Russian keyboard input. This native XKB layout shortcut is configured in Settings → Keyboard → Layout and documented in [the input setup](input.md); it is separate from the application's shortcut bindings.
 
 ## Installation
 

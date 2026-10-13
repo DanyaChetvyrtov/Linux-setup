@@ -4,6 +4,8 @@ Reproducible, modular configuration for this workstation. Keep this checkout at 
 
 Desktop layout: see [split panel setup and rollback](docs/desktop.md). The bottom application panel uses Docklike Taskbar with animated hover magnification and smooth hide/show motion; settings live in `config/panels.json`.
 
+Window management: [automatic tiling within XFCE](docs/tiling.md) uses BSPWM for Hyprland-style splits, 12px gaps, thin green borders, floating windows, and keyboard controls. Settings live in `config/bspwmrc` and `config/tiling-sxhkdrc`.
+
 Touchpad behavior: see [scroll direction and four-finger workspace gestures](docs/input.md). Configuration lives in `config/input.json` and runs in the user XFCE/X11 session.
 
 Workspace transitions: see [Picom animations and rollback](docs/animations.md). The optional `desktop` package profile installs Picom and Docklike Taskbar; animation settings live in `config/picom.conf`.

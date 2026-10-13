@@ -3,12 +3,14 @@
 import argparse
 import json
 from pathlib import Path
+import shlex
 import subprocess
 import sys
 
 REPO = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(REPO / "src"))
 from shortcut_catalog import Binding, annotation_path, default_description, extract_bindings, read_annotation
+import tiling_shortcuts
 
 import gi
 gi.require_version("Gtk", "3.0")
@@ -16,7 +18,7 @@ gi.require_version("Xfconf", "0")
 from gi.repository import Gio, GLib, Gtk, Pango, Xfconf
 
 HOTKEY, DESCRIPTION, COMMAND, PROVIDER, SHORTCUT, PROPERTY, ANNOTATED = range(7)
-CATEGORIES = {"commands": "Applications", "xfwm4": "Windows & workspaces"}
+CATEGORIES = {"commands": "Applications", "xfwm4": "Windows & workspaces", "bspwm": "Tiling & workspaces"}
 
 
 class ShortcutStore:
@@ -31,20 +33,30 @@ class ShortcutStore:
         catalog = json.loads((REPO / "config/shortcut-descriptions.json").read_text())
         notes = self.notes.get_properties("/descriptions")
         rows = []
-        for provider in CATEGORIES:
-            override = self.bindings.get_bool(f"/{provider}/custom/override", False)
-            base = f"/{provider}/" + ("custom" if override else "default")
-            for binding in extract_bindings(provider, self.bindings.get_properties(base), base):
+        providers = ("commands", "bspwm" if tiling_shortcuts.active() else "xfwm4")
+        for provider in providers:
+            if provider == "bspwm":
+                current = tiling_shortcuts.bindings()
+            else:
+                override = self.bindings.get_bool(f"/{provider}/custom/override", False)
+                base = f"/{provider}/" + ("custom" if override else "default")
+                current = extract_bindings(provider, self.bindings.get_properties(base), base)
+            for binding in current:
                 key, modifiers = Gtk.accelerator_parse(binding.shortcut)
                 label = Gtk.accelerator_get_label(key, modifiers) if key else binding.shortcut
                 saved = read_annotation(binding, notes.get(annotation_path(binding)))
-                description = saved if saved is not None else default_description(binding, catalog)
+                default = tiling_shortcuts.description(binding.command) if provider == "bspwm" else default_description(binding, catalog)
+                description = saved if saved is not None else default
                 rows.append([label, description, binding.command, provider, binding.shortcut,
                              binding.property, saved is not None])
         return sorted(rows, key=lambda row: (row[PROVIDER] != "commands", row[HOTKEY].casefold()))
 
     def save(self, binding, description):
-        if self.bindings.get_string(binding.property, None) != binding.command:
+        if binding.provider == "bspwm":
+            unchanged = binding in tiling_shortcuts.bindings()
+        else:
+            unchanged = self.bindings.get_string(binding.property, None) == binding.command
+        if not unchanged:
             raise RuntimeError("This shortcut changed while you were editing. Select it again and retry.")
         path = annotation_path(binding)
         description = description.strip()
@@ -133,8 +145,9 @@ class ShortcutWindow(Gtk.ApplicationWindow):
         footer.pack_start(self.edit_button, False, False, 0)
         settings = Gtk.MenuButton(label="Edit hotkeys…")
         menu = Gtk.Menu()
+        window_settings = "mousepad " + shlex.quote(str(tiling_shortcuts.CONFIG)) if tiling_shortcuts.active() else "xfwm4-settings"
         for label, command in [("Application shortcuts", "xfce4-keyboard-settings"),
-                               ("Window & workspace shortcuts", "xfwm4-settings")]:
+                               ("Window & workspace shortcuts", window_settings)]:
             item = Gtk.MenuItem(label=label)
             item.connect("activate", lambda _item, cmd=command: self.open_settings(cmd))
             menu.append(item)

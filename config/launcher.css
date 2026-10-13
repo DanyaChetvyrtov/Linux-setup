@@ -1,0 +1,172 @@
+/* Native Whisker Menu styling. Every selector stays inside the popup. */
+#whiskermenu-window {
+  background-color: #171c24;
+  background-image: none;
+  color: #e9eef5;
+  font-family: Cantarell, sans-serif;
+  font-size: 14px;
+  border-radius: 8px;
+  text-shadow: none;
+  -gtk-icon-shadow: none;
+}
+
+#whiskermenu-window > frame > border {
+  border: 1px solid rgba(211, 229, 239, 0.14);
+  border-radius: 8px;
+  box-shadow: none;
+}
+
+#whiskermenu-window .search-area {
+  margin: 18px 18px 10px;
+}
+
+#whiskermenu-window entry {
+  min-height: 30px;
+  padding: 8px 14px;
+  border: 1px solid #37454b;
+  border-radius: 12px;
+  background-color: #222b34;
+  background-image: none;
+  color: #f4f7fa;
+  font-size: 16px;
+  caret-color: #8ee0c0;
+  box-shadow: none;
+  transition: border-color 140ms ease, background-color 140ms ease;
+}
+
+#whiskermenu-window entry:focus {
+  background-color: #253039;
+  border-color: #5bac91;
+  box-shadow: inset 0 0 0 1px rgba(91, 172, 145, 0.12);
+}
+
+#whiskermenu-window entry image {
+  color: #8ee0c0;
+  -gtk-icon-shadow: none;
+}
+
+#whiskermenu-window .contents {
+  margin: 0 14px;
+}
+
+#whiskermenu-window scrolledwindow,
+#whiskermenu-window scrolledwindow.frame {
+  background-color: transparent;
+  background-image: none;
+  border: 0;
+  box-shadow: none;
+  padding: 0;
+  margin: 0;
+}
+
+#whiskermenu-window scrolledwindow > border {
+  border: 0;
+}
+
+#whiskermenu-window .categories {
+  padding: 4px 12px 4px 0;
+}
+
+#whiskermenu-window button {
+  background-color: transparent;
+  background-image: none;
+  color: #abb8c7;
+  border: 1px solid transparent;
+  border-radius: 9px;
+  padding: 8px 10px;
+  margin: 2px 0;
+  min-height: 20px;
+  box-shadow: none;
+  text-shadow: none;
+  -gtk-icon-shadow: none;
+  outline-width: 0;
+  transition: background-color 140ms ease, color 140ms ease;
+}
+
+#whiskermenu-window button:hover {
+  background-color: #252f3b;
+  background-image: none;
+  color: #f1f5f9;
+  border-color: transparent;
+  box-shadow: none;
+  text-shadow: none;
+  -gtk-icon-shadow: none;
+}
+
+#whiskermenu-window button:checked,
+#whiskermenu-window button:active {
+  background-color: rgba(94, 195, 156, 0.14);
+  background-image: none;
+  color: #97e5c8;
+  border-color: rgba(94, 195, 156, 0.15);
+  box-shadow: none;
+}
+
+#whiskermenu-window separator {
+  min-height: 1px;
+  background-color: rgba(200, 218, 232, 0.10);
+  margin: 8px 6px;
+}
+
+#whiskermenu-window scrolledwindow.frame iconview,
+#whiskermenu-window scrolledwindow.frame iconview:not(:hover):not(:focus),
+#whiskermenu-window scrolledwindow.frame treeview {
+  background-color: transparent;
+  background-image: none;
+  color: #e9eef5;
+  border: 0;
+  box-shadow: none;
+  border-radius: 10px;
+  padding: 8px;
+  -GtkIconView-cell-spacing: 8;
+  -GtkTreeView-vertical-separator: 18;
+}
+
+#whiskermenu-window scrolledwindow.frame iconview:hover,
+#whiskermenu-window scrolledwindow.frame treeview:hover {
+  background-color: rgba(188, 212, 231, 0.08);
+  color: #ffffff;
+  border-radius: 10px;
+}
+
+#whiskermenu-window scrolledwindow.frame iconview:selected,
+#whiskermenu-window scrolledwindow.frame treeview:selected {
+  background-color: rgba(94, 195, 156, 0.16);
+  color: #c8f4e3;
+  border-radius: 10px;
+  outline-color: transparent;
+}
+
+#whiskermenu-window .title-area {
+  margin: 10px 18px 14px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(200, 218, 232, 0.10);
+  color: #abb8c7;
+  font-size: 13px;
+}
+
+#whiskermenu-window .commands-area button {
+  min-width: 24px;
+  min-height: 24px;
+  padding: 6px;
+  margin-left: 6px;
+  border-radius: 9px;
+}
+
+#whiskermenu-window scrollbar {
+  background-color: transparent;
+  border: 0;
+}
+
+#whiskermenu-window scrollbar slider {
+  min-width: 4px;
+  min-height: 24px;
+  margin: 2px;
+  border: 0;
+  border-radius: 6px;
+  background-color: rgba(188, 212, 231, 0.20);
+}
+
+#whiskermenu-window scrollbar slider:hover {
+  background-color: rgba(188, 212, 231, 0.36);
+}

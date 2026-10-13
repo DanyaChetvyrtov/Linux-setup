@@ -1,5 +1,15 @@
 # Touchpad scrolling and workspace gestures
 
+## English and Russian keyboard input
+
+The keyboard supports English (US) and standard Russian. **Super + Space** switches between them. XFCE saves the layouts and switching option in its native `keyboard-layout` settings, so they apply to the active X11 session and future logins. Open Settings → Keyboard → Layout to adjust them interactively.
+
+`config/keyboard.json` defines the layouts, variants and switching option. `python3 scripts/configure-keyboard.py` previews the setup; `--apply` installs it, preserving unrelated keyboard options. The original settings and complete XKB keymap are backed up under `state/keyboard/backups/`. `--restore` returns the keyboard to its state before the first application.
+
+`python3 scripts/verify-keyboard.py` opens a temporary input window, types through physical keycodes, checks `hello` in English and `привет` in Russian, and verifies that Super+Space switches both ways. It restores the previous keyboard group and window focus, then closes the check window. Its results and screenshot are saved under `state/keyboard/`.
+
+## Touchpad and gestures
+
 The ELAN touchpad exposed natural scrolling disabled and advertises gesture support via XInput 2.4. Four-finger workspace changes were observed in the running listener's log. This configuration reverses the inspected scroll direction by enabling natural scrolling in XFCE's persistent per-device pointer settings.
 
 Four-finger horizontal gestures use a small native X11 listener built from `src/workspace-gestures.c` with the installed GCC/libXi/libX11 development libraries. It runs as your user without raw `/dev/input` access or system package installation. The autostart entry starts it on subsequent XFCE logins.

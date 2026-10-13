@@ -1,0 +1,5 @@
+{
+  "layouts": ["us", "ru"],
+  "variants": ["", ""],
+  "switch_option": "grp:win_space_toggle"
+}

@@ -8,7 +8,7 @@ profiles=("$@")
 if (( ${#profiles[@]} == 0 )); then profiles=(base languages containers security); fi
 packages=()
 for profile in "${profiles[@]}"; do
-  case "$profile" in base|languages|containers|security|desktop) ;; *) echo "Unknown profile: $profile" >&2; exit 2;; esac
+  case "$profile" in base|languages|containers|security|desktop|tiling) ;; *) echo "Unknown profile: $profile" >&2; exit 2;; esac
   while IFS= read -r package; do
     [[ -z "$package" || "$package" == \#* ]] || packages+=("$package")
   done < "$repo/packages/$profile.txt"

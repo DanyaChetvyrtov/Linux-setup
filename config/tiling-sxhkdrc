@@ -1,0 +1,49 @@
+# Only window management keys; XFCE continues to handle application shortcuts.
+
+# Move focus and swap tiles.
+super + {Left,Down,Up,Right}
+	bspc node -f {west,south,north,east}
+super + shift + {Left,Down,Up,Right}
+	bspc node -s {west,south,north,east}
+
+# Grow or shrink the focused tile along an edge.
+super + ctrl + {Left,Down,Up,Right}
+	bspc node -z {left -40 0,bottom 0 40,top 0 -40,right 40 0}
+super + ctrl + shift + {Left,Down,Up,Right}
+	bspc node -z {left 40 0,bottom 0 -40,top 0 40,right -40 0}
+
+# Floating, fullscreen, and a focused-window layout within the workspace.
+super + v
+	bspc node -t '~floating'
+alt + F11
+	bspc node -t '~fullscreen'
+super + m
+	bspc desktop -l next
+
+# Close and cycle through windows.
+super + q
+	bspc node -c
+alt + F4
+	bspc node -c
+alt + {_,shift + }Tab
+	bspc node -f {next,prev}.local.!hidden.window
+alt + F6
+	bspc node -g sticky
+
+# Four workspaces. Existing Ctrl+Alt combinations remain available.
+super + {1-4}
+	bspc desktop -f '^{1-4}'
+super + shift + {1-4}
+	bspc node -d '^{1-4}' --follow
+ctrl + alt + {1-4}
+	bspc desktop -f '^{1-4}'
+ctrl + super + {1-4}
+	bspc node -d '^{1-4}'
+ctrl + alt + {Left,Right}
+	bspc desktop -f {prev,next}.local
+ctrl + alt + {Home,End}
+	bspc node -d {prev,next}.local --follow
+
+# Restore the original XFCE window manager if needed.
+super + ctrl + Escape
+	python3 /home/danil/kali-setup/scripts/configure-tiling.py --restore

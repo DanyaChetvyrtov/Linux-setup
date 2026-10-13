@@ -1,0 +1,42 @@
+#!/bin/sh
+# Dwindle-style automatic tiling. XFCE supplies the panels and application keys.
+set -eu
+
+bspc monitor -d 1 2 3 4
+bspc config window_gap 12
+bspc config border_width 2
+bspc config focused_border_color '#69b581'
+bspc config active_border_color '#476c52'
+bspc config normal_border_color '#303a33'
+bspc config presel_feedback_color '#69b581'
+bspc config split_ratio 0.50
+bspc config automatic_scheme alternate
+bspc config initial_polarity second_child
+bspc config honor_size_hints floating
+if [ "$(bspc config focus_follows_pointer)" != true ]; then
+    bspc config focus_follows_pointer true
+fi
+bspc config pointer_follows_focus false
+bspc config pointer_modifier mod4
+bspc config pointer_action1 move
+bspc config pointer_action2 resize_side
+bspc config pointer_action3 resize_corner
+bspc config ignore_ewmh_struts false
+bspc rule -a Xfce4-panel manage=off
+bspc rule -a Xfdesktop manage=off
+# Keep Whisker above the tiles while giving its search field keyboard focus.
+bspc rule -r 'Wrapper-2.0:wrapper-2.0:Whisker Menu' || :
+bspc rule -a 'Wrapper-2.0:wrapper-2.0:Whisker Menu' state=floating focus=on border=off layer=above
+bspc rule -a Pavucontrol state=floating center=on
+bspc rule -a Xfce4-settings-manager state=floating center=on
+bspc rule -a Xfce4-screenshooter state=floating center=on
+bspc rule -a Pinentry state=floating center=on
+
+# Adopt windows when changing managers without logging out.
+bspc wm --adopt-orphans
+# BSPWM ignores stacking layers on unmanaged docks. Keep XFCE's panels above
+# normal windows without adding them to the tiling tree or taking their focus.
+python3 "$(dirname "$0")/../scripts/start-panel-stacking.py"
+if [ -n "${KALI_TILING_CONFIGURED:-}" ]; then
+    : > "$KALI_TILING_CONFIGURED"
+fi

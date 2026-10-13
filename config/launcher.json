@@ -1,0 +1,18 @@
+{
+  "menu-width": 860,
+  "menu-height": 620,
+  "menu-opacity": 100,
+  "view-mode": 0,
+  "launcher-icon-size": 3,
+  "launcher-show-name": true,
+  "launcher-show-description": false,
+  "launcher-show-tooltip": true,
+  "category-icon-size": 0,
+  "category-show-name": true,
+  "hover-switch-category": false,
+  "position-search-alternate": false,
+  "position-profile-alternate": true,
+  "position-commands-alternate": false,
+  "position-categories-alternate": true,
+  "position-categories-horizontal": false
+}
